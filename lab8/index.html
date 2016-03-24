@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>AJAX</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script>
+    function showHints(str) {
+      if (str.length == 0) {
+        document.getElementById("hints").innerHTML = "";
+        return;
+      } else {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+          if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            document.getElementById("hints").innerHTML = xmlhttp.responseText;
+          }
+        };
+        xmlhttp.open("GET", "gethints.php?q=" + str, true);
+        xmlhttp.send();
+      }
+
+    }
+
+    function sendLike() {
+      var r = new XMLHttpRequest();
+      r.onreadystatechange = function() {
+        if (r.readyState == 4 && r.status == 200) {
+          var btn = document.getElementById("likebtn");
+          if (r.responseText == 'ok') {
+            btn.innerHTML = "Вам нравится";
+            btn.disabled = true;
+          } else if (r.responseText == 'already') {
+            btn.innerHTML = "Вы уже ставили лайк";
+            btn.disabled = true;
+          } else if (r.responseText == 'fail') {
+            btn.innerHTML = "Ошибка";
+            btn.disabled = true;
+          }
+        }
+      };
+      r.open("GET", "like.php");
+      r.send();
+    }
+
+    function getLikes() {
+      var r = new XMLHttpRequest();
+      r.onreadystatechange = function() {
+        if (r.readyState == 4 && r.status == 200) {
+          var btn = document.getElementById("likesCount");
+          btn.innerHTML = "Уже " + r.responseText + " поставили лайк";
+        }
+      };
+      r.open("GET", "get_likes.php");
+      r.send();
+    }
+    window.onload = getLikes;
+  </script>
+</head>
+
+<body>
+  <div class="main">
+    <h1>AJAX</h1>
+    <p>
+      <h2>Система лайков</h2>
+      <form>
+        <button id='likebtn' type="button" onclick="sendLike()">LIKE</button>
+      </form><br>
+      <div id="likesCount">Уже Х поставили лайк</div>
+    </p>
+    <p>
+      <h2>Поиск с подсказками</h2>
+      Введите имя или его часть (например, Gears of War)
+      <form>
+        <input type='text' onkeyup="showHints(this.value)">
+      </form>
+    </p>
+    <p>
+      Найдено:
+      <br>
+      <span id='hints'></span>
+    </p>
+  </div>
+</body>
+
+</html>
