@@ -1,0 +1,117 @@
+
+body {
+  margin: 0;
+  font-family: monospace;
+  font-size: 12pt;
+}
+.main {
+  width: 60%;
+  margin: auto;
+  padding: 10px;
+  border-left: 1px solid gray;
+  border-right: 1px solid gray;
+}
+.right {
+  border-right: 1px solid black;
+}
+.bottom {
+  border-bottom: 1px solid gray;
+}
+.full {
+  border: 1px solid gray;
+}
+.centered {
+  z-index: 100;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+.gray {
+  color: gray;
+}
+.green {
+  color: white;
+  background-color: green;
+  border-radius: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.rrating
+{
+  font-size: 	x-large;
+  padding: 10px;
+}
+
+.cke_contents{border:solid 1px #696969;background-color:white;}
+
+.topic_link
+{
+  padding: 10px;
+}
+.topic_link:hover {background-color: lightgray;}
+.banned
+{
+  text-decoration: line-through;
+}
+.superuser
+{
+  background-color: red;
+  border-radius: 4px;
+  color: white;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.moder
+{
+  background-color: white;
+  border-radius: 4px;
+  color: red;
+  border: 1px solid red;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.reply_main
+{
+  border-top: 1px solid gray;
+}
+
+button {
+    background-color: white;
+    border: none;
+    color: black;
+    padding: 0px 0px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 	inherit;
+}
+button:hover
+{
+  background-color: black;
+  color: white;
+}
+
+input[type=submit]
+{
+  background-color: white;
+  border: none;
+  color: black;
+}
+
+input[type=submit]:hover
+{
+  background-color: black;
+  color: white;
+}
+
+h2, h1 { font-weight:normal; }

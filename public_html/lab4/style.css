@@ -1,0 +1,50 @@
+
+body {
+  font-family: Courier New;
+  color: #ffffff;
+  font-size: 20px;
+  background-color: #151515;
+}
+.btn {
+  font-family: Courier New;
+  color: #ffffff;
+  font-size: 20px;
+  background: rgba(0, 0, 0, 0.75);
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  display: inline-block;
+  border-width: 1px;
+  border-color: white;
+}
+input {
+  color: #ffffff;
+  font-size: 20px;
+  font-family: Courier New;
+
+}
+
+a{
+    text-decoration: none;
+    color: #EAEAEA !important;
+}
+
+/* Fade */
+.fade {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: color, background-color;
+  transition-property: color, background-color;
+}
+.fade:hover, .fade:focus, .fade:active {
+  background-color: #2098d1;
+  color: white;
+}

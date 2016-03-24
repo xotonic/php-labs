@@ -1,0 +1,74 @@
+body
+{
+  background-color: #262216;
+  font-family: serif;
+}
+
+
+.ip
+{
+  border-radius: 4px 0 0 0;
+  background-color: white;;
+  color: #262216;
+  padding: 8px;
+  display: inline-block;
+}
+
+.posted
+{
+  border-radius: 0 4px 0 0;
+  background-color: white;;
+  color: #262216;
+  padding: 8px;
+  display: inline-block;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.75);
+  border-left: 1px solid rgba(0, 0, 0, 0.75);
+
+}
+
+.msg
+{
+  border-radius: 0 4px 4px 4px;
+  background-color: white;;
+  color: #262216;
+  padding: 8px;
+}
+
+.post
+{
+  padding: 8px 0 0 0;
+}
+
+.ok
+{
+  border-radius: 4px;
+  background-color: green;
+  color: white;
+  padding: 8px;
+}
+
+.fail
+{
+  border-radius: 4px;
+  background-color: red;
+  color: white;
+  padding: 8px;
+}
+
+.captcha { border-radius: 8px;}
+.main
+{
+  width: 60%;
+  margin: auto;
+  background: rgba(0, 0, 0, 0.75);
+  padding: 10px;
+  border-radius: 8px;
+  font-family: monospace;
+}
+
+.control
+{
+  color: #262216;
+  border-radius: 4px;
+  background-color: white;;
+}
