@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>JQuery</title>
+  <script type="text/javascript" src="js/jquery-1.2.6.js"></script>
+  <script type="text/javascript" src="js/jquery.form.js"></script>
+  <script type="text/javascript" src="js/jquery.validate.js"></script>
+  <script type="text/javascript" src="js/additional-methods.js"></script>
+  <script type="text/javascript">
+    // this one requires the value to be the same as the first parameter
+    $.validator.methods.equal = function(value, element, param) {
+      return value == param;
+    };
+  </script>
+</head>
+
+<body>
+  <form action="sweet.html" name='f' id='f'>
+    Логин
+    <br>
+    <input type='text' name='login' id='login' />
+    <label for="login"><em></em></label>
+    <br> Пароль
+    <br>
+    <input type='password' name='password' id='password' />
+    <label for="password"><em></em></label>
+    <br> Повторите пароль
+    <br>
+    <input type='password' name='password2' id='password2' />
+    <label for="password2"><em></em></label>
+
+    <br> Повторите пароль еще раз
+    <br>
+    <input type='password' name='password3' id='password3' />
+    <label for="password3"><em></em></label>
+
+    <br> Фамилия следующего президента
+    <br>
+    <input type='text' name='president' id='president' />
+    <label for="president"><em></em></label>
+    <br> Сколько баллов я получу за эту лабу ?
+    <br>
+    <input type='text' name='mark' id='mark'/>
+    <label for="mark"><em></em></label>
+
+    <br> Хочешь конфетку ?
+    <label for="sweet_yes"><em></em></label><br>
+
+    <input type='checkbox' name='sweet_yes' id='sweet_yes' /> Да
+    <br>
+    <br>
+    <input type='submit' name='submit' value='Send'>
+  </form>
+
+  <script>
+    $(document).ready(function() {
+          // ---- Форма -----
+          // готовим опции для метода
+          // ajaxSubmit плагина jquery.form.js
+          jQuery.validator.addMethod("equals", function(value,element,param){ return this.optional(element) || value === param; }, jQuery.format("Нужно ввести {0}"));
+        
+          var name = 'Путин';
+          var options = {
+            target: "#output",
+            url: "sweet.html",
+            type: "post",
+            success: function() {
+              alert("что-то!");
+            },
+            timeout: 3000 // тайм-аут
+          };
+          $("#f").validate({
+            focusInvalid: false,
+            focusCleanup: true,
+            rules: {
+              login: {
+                required: true,
+                minlength: 3,
+                maxlength: 12
+              },
+              password: {
+                required: true,
+                rangelength: [6, 24]
+              },
+              password2: {
+                required: true,
+                rangelength: [6, 24],
+                equalTo: "#password"
+              },
+              password3: {
+                required: true,
+                rangelength: [6, 24],
+                equalTo: "#password"
+              },
+              president: {
+                required: true,
+                equals: name
+              },
+              mark: {
+                required: true,
+                digits: true,
+                min : 7
+              },
+              sweet_yes:
+              {
+                required: true
+              }
+            },
+            messages: {
+              login: {
+                required: "Укажите свое имя, пожалуйста!",
+                minlength: "Не менее 3 символов",
+                maxlength: "Не более 12 символов"
+              },
+              password: {
+                required: "Укажите пароль!",
+                rangelength: "Пароль - от 6 до 24 символов"
+              },
+              password2: {
+                required: "Подтвердите пароль!",
+                rangelength: "Пароль - от 6 до 24 символов",
+                equalTo: "Подтверждение пароля не принято!"
+              },
+              password3: {
+                required: "Подтвердите пароль!",
+                rangelength: "Пароль - от 6 до 24 символов",
+                equalTo: "Подтверждение пароля не принято!"
+              },
+              president: {
+                required: "Нужна фамилия",
+                equals: "Фамилия не " + name
+              },
+              mark: {
+                required: "Без оценки ничего не получится",
+                digits: "Оценка - это число",
+                min : "Слижком мало баллов"
+              },
+              sweet_yes:{ required: "Не хочешь? Что ты тут делаешь тогда?"}
+            },
+    errorPlacement: function(error, element) {
+    var er = element.attr("name");
+    error.appendTo(element.parent().find("label[@for='" + er + "']").find("em"));
+  }
+});	});
+  </script>
+
+</body>
+
+</html>
